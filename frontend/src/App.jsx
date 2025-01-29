@@ -15,7 +15,11 @@ import UpdateProfile from "./pages/UpdateProfile";
 function ProtectedRoute({ children }) {
   const { data } = useSelector((state) => state.user);
 
-  if (!data) return <Navigate to="/login" />;
+  if (!data) return (
+    <Routes>
+      <Route path="/" element={ <Login /> } />
+    </Routes>
+  );
   return children;
 }
 
